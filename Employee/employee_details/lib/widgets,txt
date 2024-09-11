@@ -1,0 +1,39 @@
+List<String> department = ['CIVIL', 'CSE', 'AI', 'ECE', 'EEE', 'MECH', 'MCA'];
+  String? selectedDepartment;
+
+DropdownButton(
+                    value: selectedDepartment,
+                    hint: const Text('Select a department'),
+                    items: department
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedDepartment = value;
+                      });
+                    }),
+
+List<String> gender = ['Male', 'Female','Others'];
+  String? selectedGender;
+
+  DropdownButton(
+                    value: selectedGender,
+                    hint: const Text('Gender'),
+                    items: gender
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedGender = value;
+                      });
+                    }),
+
+
