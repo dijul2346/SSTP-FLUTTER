@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class ScreenPayroll extends StatelessWidget {
   const ScreenPayroll({super.key});
 
@@ -21,7 +20,7 @@ class ScreenPayroll extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Employee Name: Dummy Data',
+                'Employee Name: ${nameController.text}  ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
