@@ -3,24 +3,10 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class ScreenEmployeeDetails extends StatefulWidget {
-  late String name;
-  late String id;
-  late String dept;
-  late String mail;
-  late String gender;
-  late String addr;
-  late num sal;
-  ScreenEmployeeDetails(
-      {super.key,
-      required this.name,
-      required this.id,
-      required this.dept,
-      required this.mail,
-      required this.gender,
-      required this.addr,
-      required this.sal});
+ 
   @override
   State<ScreenEmployeeDetails> createState() => _ScreenEmployeeDetailsState();
+  
 }
 
 class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
@@ -35,19 +21,20 @@ class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
   final mailController = TextEditingController();
   final addrController = TextEditingController();
   final salController = TextEditingController();
+  final mobController= TextEditingController();
 
   @override
   void initState() {
     super.initState();
     // Initialize the controllers with existing data from the widget
-    nameController.text = widget.name;
-    idController.text = widget.id;
-    deptController.text = widget.dept;
-    mailController.text = widget.mail;
-    addrController.text = widget.addr;
-    salController.text = widget.sal.toString();
-    selectedGender = widget.gender;
-    selectedDepartment = widget.dept;
+    // nameController.text = widget.name;
+    // idController.text = widget.id;
+    // deptController.text = widget.dept;
+    // mailController.text = widget.mail;
+    // addrController.text = widget.addr;
+    // salController.text = widget.sal.toString();
+    // selectedGender = widget.gender;
+    // selectedDepartment = widget.dept;
     print(nameController.text);
   }
 
@@ -99,6 +86,7 @@ class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: idController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Employee ID Cannot be empty!';
@@ -132,6 +120,7 @@ class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: mailController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Email Cannot be empty!';
@@ -166,6 +155,7 @@ class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         keyboardType: TextInputType.numberWithOptions(),
+                        controller: mobController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Mobile Number Cannot be empty!';
@@ -184,6 +174,7 @@ class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: addrController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Address Cannot be empty!';
@@ -203,6 +194,7 @@ class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: salController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Basic Pay Cannot be empty!';
@@ -222,7 +214,8 @@ class _ScreenEmployeeDetailsState extends State<ScreenEmployeeDetails> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const ScreenPayroll()));
+                              builder: (context) =>  ScreenPayroll(name: nameController.text, id: idController.text, dept: selectedDepartment!, mail: mailController.text, gender: selectedGender!,mob: mobController.text, addr: addrController.text, sal: salController.text)));
+              
                         }
                       },
                       style: ButtonStyle(

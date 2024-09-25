@@ -1,6 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:employee_details/details_screen.dart';
+
 class ScreenPayroll extends StatelessWidget {
-  const ScreenPayroll({super.key});
+  late String name;
+  late String id;
+  late String dept;
+  late String mail;
+  late String gender;
+  late String mob;
+  late String addr;
+  late String sal;
+  late num saln;
+  late num hra;
+  late num da;
+  late num ta;
+  late num net;
+
+  ScreenPayroll(
+      {super.key,
+      required this.name,
+      required this.id,
+      required this.dept,
+      required this.mail,
+      required this.gender,
+      required this.mob,
+      required this.addr,
+      required this.sal}) {
+    saln = num.parse(sal);
+    calculateSalaryDetails();
+  }
+  void calculateSalaryDetails() {
+    hra = saln * 0.1;
+    da = saln * 0.15;
+    ta = saln * 0.1;
+    net =saln+hra + da + ta;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +47,14 @@ class ScreenPayroll extends StatelessWidget {
         ),
         backgroundColor: Colors.purple,
       ),
-      body: const Padding(
+      body: Padding(
         padding: EdgeInsets.all(15.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Employee Name: ${nameController.text}  ',
+                'Employee Name: $name ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -29,7 +63,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Employee ID: Dummy Data',
+                'Employee ID: $id',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -38,7 +72,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Employee Department: Dummy Data',
+                'Employee Department: $dept',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -47,7 +81,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Employee Email: Dummy Data',
+                'Employee Email: $mail',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -56,7 +90,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Employee Gender: Dummy Data',
+                'Employee Gender: $gender',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -65,7 +99,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Employee DOB: Dummy Data',
+                'Employee DOB: ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -74,7 +108,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Employee Mobile: Dummy Data',
+                'Employee Mobile: $mob ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -83,7 +117,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Employee Address: Dummy Data',
+                'Employee Address: $addr',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -92,7 +126,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Basic Pay: Dummy Data',
+                'Basic Pay: $sal',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -101,7 +135,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'DA: Dummy Data',
+                'DA: $da',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -110,7 +144,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'HRA: Dummy Data',
+                'HRA: $hra',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -119,7 +153,7 @@ class ScreenPayroll extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'TA: Dummy Data',
+                'TA: $ta',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -131,7 +165,7 @@ class ScreenPayroll extends StatelessWidget {
                 padding: EdgeInsets.all(20.0),
                 child: Center(
                     child: Text(
-                  'Net Salary 86000',
+                  'Net Salary $net',
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
